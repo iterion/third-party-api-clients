@@ -17027,11 +17027,8 @@ pub struct AddListMembers {
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
-    #[serde(
-        default,
-        deserialize_with = "crate::utils::deserialize_null_boolean::deserialize"
-    )]
-    pub interests: bool,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub interests: Option<serde_json::Value>,
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
