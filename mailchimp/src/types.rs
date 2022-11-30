@@ -17094,19 +17094,19 @@ pub struct AddListMembers {
     */
     #[serde(
         default,
-        skip_serializing_if = "String::is_empty",
-        deserialize_with = "crate::utils::deserialize_null_string::deserialize"
+        skip_serializing_if = "Option::is_none",
+        deserialize_with = "crate::utils::date_time_format::deserialize"
     )]
-    pub timestamp_opt: String,
+    pub timestamp_opt: Option<chrono::DateTime<chrono::Utc>>,
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
     #[serde(
         default,
-        skip_serializing_if = "String::is_empty",
-        deserialize_with = "crate::utils::deserialize_null_string::deserialize"
+        skip_serializing_if = "Option::is_none",
+        deserialize_with = "crate::utils::date_time_format::deserialize"
     )]
-    pub timestamp_signup: String,
+    pub timestamp_signup: Option<chrono::DateTime<chrono::Utc>>,
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
