@@ -17254,11 +17254,8 @@ pub struct AddListMembersDataType {
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
-    #[serde(
-        default,
-        deserialize_with = "crate::utils::deserialize_null_boolean::deserialize"
-    )]
-    pub interests: bool,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub interests: Option<serde_json::Value>,
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
@@ -17315,19 +17312,19 @@ pub struct AddListMembersDataType {
     */
     #[serde(
         default,
-        skip_serializing_if = "Option::is_none",
-        deserialize_with = "crate::utils::date_time_format::deserialize"
+        skip_serializing_if = "String::is_empty",
+        deserialize_with = "crate::utils::deserialize_null_string::deserialize"
     )]
-    pub timestamp_opt: Option<String>,
+    pub timestamp_opt: String,
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
     #[serde(
         default,
-        skip_serializing_if = "Option::is_none",
-        deserialize_with = "crate::utils::date_time_format::deserialize"
+        skip_serializing_if = "String::is_empty",
+        deserialize_with = "crate::utils::deserialize_null_string::deserialize"
     )]
-    pub timestamp_signup: Option<String>,
+    pub timestamp_signup: String,
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
