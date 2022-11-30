@@ -52,6 +52,11 @@ pub fn generate_types(ts: &mut TypeSpace, proper_name: &str) -> Result<String> {
                 }
                 TypeDetails::AllOf(omap, _) => a(&do_all_of_type(ts, omap, sn)),
                 TypeDetails::Object(omap, schema_data) => {
+                    if sn == "AddListMembers" {
+                        println!("WOOOOO");
+                        println!("{:?}", omap);
+                        println!("{:?}", schema_data);
+                    }
                     /*
                      * TODO: This breaks things so ignore for now.
                      * Eventually this should work, we should ignore empty structs.
@@ -108,6 +113,12 @@ pub fn generate_types(ts: &mut TypeSpace, proper_name: &str) -> Result<String> {
                     a(&format!("pub struct {} {{", sn));
                     for (name, tid) in omap.iter() {
                         if let Ok(mut rt) = ts.render_type(tid, true) {
+                            if name == "interests" {
+                                println!("WOO2");
+                                println!("{:?}", tid);
+                                println!("{}", rt);
+                                println!("{}", ts.describe(tid));
+                            }
                             // Stripe has some really weird recursive types.
                             if rt.ends_with("AnyOf") && proper_name == "Stripe" {
                                 // Stripe uses anyof, but we want oneof.
