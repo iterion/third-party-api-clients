@@ -17318,7 +17318,7 @@ pub struct AddListMembersDataType {
         skip_serializing_if = "Option::is_none",
         deserialize_with = "crate::utils::date_time_format::deserialize"
     )]
-    pub timestamp_opt: Option<chrono::DateTime<chrono::Utc>>,
+    pub timestamp_opt: Option<String>,
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
@@ -17327,7 +17327,7 @@ pub struct AddListMembersDataType {
         skip_serializing_if = "Option::is_none",
         deserialize_with = "crate::utils::date_time_format::deserialize"
     )]
-    pub timestamp_signup: Option<chrono::DateTime<chrono::Utc>>,
+    pub timestamp_signup: Option<String>,
     /**
     * Individuals who are currently or have been previously subscribed to this list, including members who have bounced or unsubscribed.
     */
