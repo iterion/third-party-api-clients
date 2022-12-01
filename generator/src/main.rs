@@ -3045,6 +3045,8 @@ fn main() -> Result<()> {
 
                 debug("");
                 debug(&oid);
+                if pn == "/lists/{list_id}/members" {
+                }
 
                 /*
                  * Get the request body type, if this operation has one.
