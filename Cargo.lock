@@ -1518,6 +1518,41 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a3f87b73ce11b1619a3c6332f45341e0047173771e8b8b73f87bfeefb7b56244"
 
 [[package]]
+name = "remote-api"
+version = "0.3.1"
+dependencies = [
+ "anyhow",
+ "async-recursion",
+ "async-trait",
+ "base64",
+ "bytes",
+ "chrono",
+ "dirs",
+ "http",
+ "hyperx",
+ "jsonwebtoken",
+ "log",
+ "mime",
+ "nom_pem",
+ "openssl",
+ "pem",
+ "percent-encoding",
+ "reqwest",
+ "reqwest-conditional-middleware",
+ "reqwest-middleware",
+ "reqwest-retry",
+ "reqwest-tracing",
+ "ring",
+ "schemars",
+ "serde",
+ "serde_json",
+ "serde_urlencoded",
+ "tokio",
+ "url",
+ "uuid",
+]
+
+[[package]]
 name = "remove_dir_all"
 version = "0.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"

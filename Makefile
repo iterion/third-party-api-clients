@@ -59,6 +59,10 @@ RAMP_SPEC = $(RAMP_SPEC_DIR)/ramp.v1.json
 RAMP_SPEC_REPO = sumatokado/ramp-developer
 RAMP_SPEC_REFERENCE = $(RAMP_SPEC_DIR)/reference/Ramp-developer.v1.yaml
 
+REMOTE_SPEC_DIR = $(CURDIR)/specs/remote
+REMOTE_SPEC = $(REMOTE_SPEC_DIR)/remote.v1.json
+REMOTE_SPEC_REMOTE = https://remote.com/4791a4a5-62a4-4885-8408-9ea050ebf872
+
 REVAI_SPEC_DIR = $(CURDIR)/specs/rev.ai
 REVAI_SPEC = $(REVAI_SPEC_DIR)/rev.ai.yaml
 REVAI_SPEC_REMOTE = https://raw.githubusercontent.com/APIs-guru/openapi-directory/main/APIs/rev.ai/v1/openapi.yaml
@@ -408,6 +412,23 @@ ramp: target/debug/generator $(RAMP_SPEC)
 		--user-consent-endpoint "app.ramp.com/v1/authorize" $(EXTRA_ARGS)
 	cargo fmt -p ramp-api
 	@echo -e "- [Ramp](ramp/) [![docs.rs](https://docs.rs/ramp-api/badge.svg)](https://docs.rs/ramp-api)" >> README.md
+
+$(REMOTE_SPEC_DIR):
+	mkdir -p $@
+
+# $(REMOTE_SPEC): $(REMOTE_SPEC_DIR)
+# 	curl -sSL $(REMOTE_SPEC_REMOTE) -o $@
+
+remote: target/debug/generator $(REMOTE_SPEC)
+	./target/debug/generator -i $(REMOTE_SPEC) -v 0.3.1 \
+		-o remote \
+		-n remote-api \
+		--proper-name Remote \
+		-d "A fully generated & opinionated API client for the Remote.com API." \
+		--spec-link "$(REMOTE_SPEC_REMOTE)" \
+		--host "gateway.remote.com/" $(EXTRA_ARGS)
+	cargo fmt -p remote-api
+	@echo -e "- [Remote](remote/) [![docs.rs](https://docs.rs/remote-api/badge.svg)](https://docs.rs/remote-api)" >> README.md
 
 $(REVAI_SPEC_DIR):
 	mkdir -p $@
