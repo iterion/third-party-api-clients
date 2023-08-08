@@ -3045,8 +3045,7 @@ fn main() -> Result<()> {
 
                 debug("");
                 debug(&oid);
-                if pn == "/lists/{list_id}/members" {
-                }
+                if pn == "/lists/{list_id}/members" {}
 
                 /*
                  * Get the request body type, if this operation has one.
@@ -3254,9 +3253,9 @@ openssl = {{ version = "0.10", default-features = false, optional = true }}
 pem = {{ version = "1.1.0",  default-features = false, optional = true }}
 percent-encoding = "2.1"
 reqwest = {{ version = "0.11.11", default-features = false, features = ["json", "multipart"] }}
-reqwest-conditional-middleware = "0.1.0"
-reqwest-middleware = "0.1.5"
-reqwest-retry = "0.1.4"
+reqwest-conditional-middleware = "0.2.1"
+reqwest-middleware = "0.2.2"
+reqwest-retry = "0.2.2"
 reqwest-tracing = {{ version = "0.3.0", features = ["opentelemetry_0_17"] }}
 ring = {{ version = "0.16", default-features = false, optional = true }}
 schemars = {{ version = "0.8", features = ["bytes", "chrono", "url", "uuid1"] }}
